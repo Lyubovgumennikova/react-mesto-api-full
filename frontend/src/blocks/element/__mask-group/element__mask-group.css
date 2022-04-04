@@ -1,0 +1,9 @@
+.element__mask-group {
+    width: 282px;
+    height: 282px;
+    min-height: 282px;
+}
+
+.element__mask-group:hover {
+    opacity: 0.5;
+}

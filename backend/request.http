@@ -1,0 +1,29 @@
+GET http://localhost:3000/users
+
+###
+
+POST http://localhost:3000/users
+
+{
+    "name": "ff",
+    "about": "ava",
+    "avatar": "https://pictures.s3.yandex.net/frontend-developer/common/ava.jpg"
+}
+
+###
+
+GET http://localhost:3000/cards;
+
+
+###
+
+POST http://localhost:3000/cards;
+Content-Type: application/json
+
+{
+
+    "name": "ava",
+    "link": "https://pictures.s3.yandex.net/frontend-developer/common/ava.jpg"
+
+
+}

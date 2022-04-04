@@ -1,0 +1,22 @@
+.element__vector {
+    margin-left: auto;
+    margin-right: 1px;
+    border: none;
+    padding: 0;
+    background: url(../../../images/Vector-1.svg) center no-repeat;
+    background-size: 100%;
+    cursor: pointer;
+    height: 19px;
+    width: 22px;
+    position: static;
+    transition: 0.3s;
+    align-self: center;
+}
+
+.element__vector:hover {
+    opacity: 0.5;
+}
+
+.element__vector:active {
+    background: #000000;
+}

@@ -1,0 +1,12 @@
+.profile__avatar {
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+@media (max-width: 619px) {
+    .profile__avatar  {
+        margin: 0;
+    }
+}

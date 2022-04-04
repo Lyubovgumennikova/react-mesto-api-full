@@ -1,0 +1,11 @@
+.profile__info-nik {
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width: 767px) {
+    .profile__info-nik {
+        margin-top: 22.5px;
+        justify-content: center;
+    }
+}
