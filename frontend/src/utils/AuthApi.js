@@ -1,5 +1,5 @@
-export const BASE_URL = "https://auth.nomoreparties.co";
-
+export const BASE_URL = 'http://api.domain.nomoredomains.work/';
+//"https://auth.nomoreparties.co"
 export const request = ({ url, method = "POST", token, body }) => {
   const config = {
     method,

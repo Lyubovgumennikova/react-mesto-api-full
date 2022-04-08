@@ -26,7 +26,7 @@ class Api {
             body: JSON.stringify({
                 name: data.name,
                 link: data.link,
-                    
+
                 }),
         }).then((res) => this._errorHandler(res));
     }
@@ -35,7 +35,7 @@ class Api {
         return fetch(`${this._url}cards/${data}`, {
             method: "DELETE",
             headers: this._headers,
-            
+
         }).then((res) => this._errorHandler(res));
     }
 
@@ -69,40 +69,41 @@ class Api {
             }),
         }).then((res) => this._errorHandler(res));
     }
-    
+
     addCardLike(data) { // •	“залайкать” карточку (PUT)
         return fetch(`${this._url}cards/${data._cardId}/likes`, {
             method: "PUT",
             headers: this._headers,
-            
+
         }).then((res) => this._errorHandler(res));
     }
 
-    changeLikeCardStatus(data, isLiked) { // •	“залайкать” карточку 
+    changeLikeCardStatus(data, isLiked) { // •	“залайкать” карточку
         const promise = !isLiked
         return fetch(`${this._url}cards/${data}/likes`, {
             method: promise ? 'DELETE' : 'PUT',
             headers: this._headers,
-            
+
         }).then((res) => this._errorHandler(res));
     }
-    
+
 
     deleteCardLike(data) { // •	удалить лайк карточки (DELETE)
         return fetch(`${this._url}cards/${data._cardId}/likes`, {
             method: "DELETE",
             headers: this._headers,
-            
+
         }).then((res) => this._errorHandler(res));
     }
 }
 
 const api = new Api({
-    url: 'https://mesto.nomoreparties.co/v1/cohort-33/',
+    url: 'http://frontend.domain.nomoredomains.xyz/',
     headers: {
         Authorization: 'be382cad-ad48-4296-8278-8fad1d3ee484',
         "content-type": "application/json"
     }
 });
+//'https://mesto.nomoreparties.co/v1/cohort-33/',
 
 export default api;
