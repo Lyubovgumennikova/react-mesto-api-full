@@ -98,7 +98,7 @@ class Api {
 }
 
 const api = new Api({
-    url: 'http://frontend.domain.nomoredomains.xyz/',
+    url: 'http://api.domain.nomoredomains.work',
     headers: {
         Authorization: 'be382cad-ad48-4296-8278-8fad1d3ee484',
         "content-type": "application/json"
