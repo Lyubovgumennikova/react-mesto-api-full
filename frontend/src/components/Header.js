@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Route } from "react-router-dom/cjs/react-router-dom.min";
-import { CurrentUserContext } from "../contexts/CurrentUserContext";
+// import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import logo from "../images/logo.svg";
 
 function Header({ onSignOut, loggedIn, userData, email }) {

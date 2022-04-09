@@ -4,6 +4,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
+const cors = require('cors');
 const auth = require('./middlewares/auth');
 const { createUser, login } = require('./controllers/users');
 const errorHandler = require('./middlewares/errorHandler');
@@ -20,6 +21,10 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.get(cors({
+  origin: 'http://localhost:3001/',
+  credentials: true,
+}));
 app.use(requestLogger); // подключаем логгер запросов
 
 app.post('/signup', validations.register, createUser);

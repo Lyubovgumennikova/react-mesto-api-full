@@ -24,9 +24,6 @@ export const register = (email, password) => {
     body: { email, password},
   });
 };
-//   "password": "somepassword",
-//   "email": "email@yandex.ru"
-// })
 
 export const authorize = (email, password) => {
   return request({

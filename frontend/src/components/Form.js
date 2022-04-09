@@ -15,9 +15,9 @@ function Form({
   //   setIsSubmitted(true)
   //   handleSubmit()
   // }
-  
+
   return (
-    <form name={name} className="popup__content" onSubmit={onSubmit} > 
+    <form name={name} className="popup__content" onSubmit={onSubmit} >
       {children}
       <button type="submit" className= {`${
             isValid
