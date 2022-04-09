@@ -21,10 +21,11 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get(cors({
-  origin: 'http://localhost:3001/',
-  credentials: true,
-}));
+app.get(cors());
+// {
+//   origin: 'http://localhost:3001/',
+//   credentials: true,
+// }
 app.use(requestLogger); // подключаем логгер запросов
 
 app.post('/signup', validations.register, createUser);
