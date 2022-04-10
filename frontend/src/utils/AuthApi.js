@@ -31,10 +31,10 @@ export const authorize = (email, password) => {
   });
 };
 
-export const getContent = (token) => {
+export const getContent = (jwt) => {
   return request({
     url: `users/me`,
     method: "GET",
-    token,
+    jwt,
   });
 };

@@ -18,11 +18,11 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
 });
 
-app.use(cors());
-// {
-//   origin: 'http://localhost:3001/',
-//   credentials: true,
-// }
+app.use(cors({
+  origin: 'http://localhost:3001/',
+  credentials: true,
+}));
+
 app.use(requestLogger); // подключаем логгер запросов
 
 // app.get('/crash-test', () => {
