@@ -65,11 +65,11 @@ function App() {
     // if (!jwt) return;
     AuthApi.authorize(data.email, data.password)
       .then((jwt) => {
-        if (!jwt.token)
+        if (!jwt)
           // const myError = new Error('please improve your code')
           return;
 
-        localStorage.setItem("jwt", jwt.token);
+        localStorage.setItem("jwt", jwt);
         setIsLoggedIn(true);
         history.push("/users/me");
       })

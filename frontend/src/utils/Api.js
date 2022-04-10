@@ -100,10 +100,9 @@ class Api {
 const api = new Api({
     url: 'http://api.domain.nomoredomains.work/',
     headers: {
-        Authorization: 'be382cad-ad48-4296-8278-8fad1d3ee484',
+        Authorization: 'be382cad-ad48-4296-8278-8fad1d3ee484',  //jwt,
         "content-type": "application/json"
     }
 });
-//'https://mesto.nomoreparties.co/v1/cohort-33/',
 
 export default api;
