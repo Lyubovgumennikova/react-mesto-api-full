@@ -56,7 +56,7 @@ function App() {
         // res.data.email
         setEmail(userData.email);
         setIsLoggedIn(true);
-        history.push("/");
+        history.push("/users/me");
       })
       .catch((err) => console.log(err));
   };
@@ -64,12 +64,12 @@ function App() {
   const handleLogin = (data) => {
     // if (!jwt) return;
     AuthApi.authorize(data.email, data.password)
-      .then((jwt) => {
-        if (!jwt)
+      .then((data) => {
+        if (!data.jwt)
           // const myError = new Error('please improve your code')
           return;
 
-        localStorage.setItem("jwt", jwt);
+        localStorage.setItem("jwt", data.jwt);
         setIsLoggedIn(true);
         history.push("/users/me");
       })

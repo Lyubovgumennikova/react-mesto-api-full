@@ -9,7 +9,7 @@ module.exports = (req, res, next) => {
 
   // убеждаемся, что он есть или начинается с Bearer
   if (!authorization || !authorization.startsWith('Bearer ')) {
-    return next(new Unauthorized('Что-то не так, попробуйте снова'));
+    return next(new Unauthorized('Ошибка авторизации'));
   }
   // извлечём токен
   const token = authorization.replace('Bearer ', '');
@@ -20,7 +20,7 @@ module.exports = (req, res, next) => {
     payload = jwt.verify(token, JWT_SECRET);
   } catch (err) {
     // отправим ошибку, если не получилось
-    return next(new Forbidden('Нет доступа'));
+    return next(new Forbidden('Необходима авторизация'));
   }
   req.user = payload; // записываем пейлоуд в объект запроса
 
