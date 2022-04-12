@@ -18,6 +18,8 @@ module.exports = (req, res, next) => {
   try {
     // попытаемся верифицировать токен
     payload = jwt.verify(token, JWT_SECRET);
+    console.log(token);
+    console.log(payload);
   } catch (err) {
     // отправим ошибку, если не получилось
     return next(new Forbidden('Необходима авторизация'));

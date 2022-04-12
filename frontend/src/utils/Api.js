@@ -101,9 +101,10 @@ const api = new Api({
     url: 'http://api.domain.nomoredomains.work/',
     headers: {
       // Authorization : jwt,
-      // Authorization: `Bearer ${localStorage.getItem('token')}`,
+        Authorization: ` Bearer ${localStorage.jwt}`,
+        // debugger,
         // Authorization: `Bearer ${'jwt'}`,
-        Authorization: 'be382cad-ad48-4296-8278-8fad1d3ee484',  //jwt,
+        // Authorization: 'be382cad-ad48-4296-8278-8fad1d3ee484',  //jwt,
       "content-type": "application/json",
     }
 });
