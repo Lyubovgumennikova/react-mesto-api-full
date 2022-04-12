@@ -1,4 +1,4 @@
-require('dotenv').config();
+// require('dotenv').config();
 const express = require('express');
 
 console.log(process.env.NODE_ENV);
@@ -21,10 +21,6 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 });
 
 app.use(cors());
-// {
-//   origin: 'http://localhost:3001/',
-//   credentials: true,
-// }
 
 app.use(requestLogger); // подключаем логгер запросов
 
