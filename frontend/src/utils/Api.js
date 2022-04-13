@@ -1,4 +1,4 @@
-export const BASE_URL = process.env.REACT_APP_BASE_URL || 'http://localhost:3000'
+// export const BASE_URL = process.env.REACT_APP_BASE_URL || 'http://localhost:3000'
 class Api {
     constructor(config) {
         this._url = config.url;
@@ -99,8 +99,8 @@ class Api {
 }
 
 const api = new Api({
-  url: BASE_URL,
-    // url: 'http://api.domain.nomoredomains.work/',
+  // url: BASE_URL,
+    url: 'http://api.domain.nomoredomains.work/',
     headers: {
       // Authorization : jwt,
         Authorization: ` Bearer ${localStorage.jwt}`,
