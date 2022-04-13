@@ -1,4 +1,4 @@
-// export const BASE_URL = process.env.REACT_APP_BASE_URL || 'http://localhost:3000'
+export const BASE_URL = process.env.REACT_APP_BASE_URL || 'http://localhost:3000'
 class Api {
     constructor(config) {
         this._url = config.url;
@@ -14,14 +14,14 @@ class Api {
     }
 
     getInitialCards() {  //     •	получить список всех карточек в виде массива (GET)
-        return fetch(`${this._url}cards`, {
+        return fetch(`${this._url}/cards`, {
             method: "GET",
             headers: this._headers,
         }).then((res) => this._errorHandler(res));
     }
 
     addNewCard(data) {  //   •	добавить карточку (POST)
-        return fetch(`${this._url}cards`, {
+        return fetch(`${this._url}/cards`, {
             method: "POST",
             headers: this._headers,
             body: JSON.stringify({
@@ -33,7 +33,7 @@ class Api {
     }
 
     deleteCard(data) { // •	удалить карточку (DELETE)
-        return fetch(`${this._url}cards/${data}`, {
+        return fetch(`${this._url}/cards/${data}`, {
             method: "DELETE",
             headers: this._headers,
 
@@ -41,7 +41,7 @@ class Api {
     }
 
     getUserInfo() {    //получить данные пользователя (GET)
-        return fetch(`${this._url}users/me`, {
+        return fetch(`${this._url}/users/me`, {
             method: "GET",
             headers: this._headers,
         }).then((res) => {
@@ -50,7 +50,7 @@ class Api {
     }
 
     setUserInfo(data) {// •	заменить данные пользователя (PATCH)
-        return fetch(`${this._url}users/me`, {
+        return fetch(`${this._url}/users/me`, {
             method: "PATCH",
             headers: this._headers,
             body: JSON.stringify({
@@ -62,7 +62,7 @@ class Api {
 
     setUserAvatar(data) {  // •	заменить аватар (PATCH)
         // console.log(data);
-        return fetch(`${this._url}users/me/avatar`, {
+        return fetch(`${this._url}/users/me/avatar`, {
             method: "PATCH",
             headers: this._headers,
             body: JSON.stringify({
@@ -72,7 +72,7 @@ class Api {
     }
 
     addCardLike(data) { // •	“залайкать” карточку (PUT)
-        return fetch(`${this._url}cards/${data._cardId}/likes`, {
+        return fetch(`${this._url}/cards/${data._cardId}/likes`, {
             method: "PUT",
             headers: this._headers,
 
@@ -81,7 +81,7 @@ class Api {
 
     changeLikeCardStatus(data, isLiked) { // •	“залайкать” карточку
         const promise = !isLiked
-        return fetch(`${this._url}cards/${data}/likes`, {
+        return fetch(`${this._url}/cards/${data}/likes`, {
             method: promise ? 'DELETE' : 'PUT',
             headers: this._headers,
 
@@ -90,7 +90,7 @@ class Api {
 
 
     deleteCardLike(data) { // •	удалить лайк карточки (DELETE)
-        return fetch(`${this._url}cards/${data._cardId}/likes`, {
+        return fetch(`${this._url}/cards/${data._cardId}/likes`, {
             method: "DELETE",
             headers: this._headers,
 
@@ -99,8 +99,8 @@ class Api {
 }
 
 const api = new Api({
-  // url: BASE_URL,
-    url: 'http://api.domain.nomoredomains.work/',
+  url: BASE_URL,
+    // url: 'http://api.domain.nomoredomains.work/',
     headers: {
       // Authorization : jwt,
         Authorization: ` Bearer ${localStorage.jwt}`,
