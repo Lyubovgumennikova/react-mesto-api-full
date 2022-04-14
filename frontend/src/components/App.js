@@ -214,14 +214,14 @@ function App() {
 
   useEffect(() => {
     if (localStorage.getItem("jwt")) {
-      const userData = [api.getUserInfo(), api.getInitialCards(), email];
+      const userData = [api.getUserInfo(), api.getInitialCards()]; //, email
     // if (!isLoggedIn) return;
     // if (currentUser)
       Promise.all(userData)
-        .then(([userData, items]) => {
-          setCards(items);
-          setCurrentUser(userData);
-
+        .then(([user, items]) => {
+          setCards(items.data);
+          setCurrentUser(user.data);
+          // email: data;
           history.push("/users/me");
         })
         .catch((err) => console.log(err));
