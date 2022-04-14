@@ -213,10 +213,10 @@ function App() {
   }
 
   useEffect(() => {
-    tokenCheck();
-    const userData = [api.getUserInfo(), api.getInitialCards(), email];
+    if (localStorage.getItem("jwt")) {
+      const userData = [api.getUserInfo(), api.getInitialCards(), email];
     // if (!isLoggedIn) return;
-    if (currentUser)
+    // if (currentUser)
       Promise.all(userData)
         .then(([userData, items]) => {
           setCards(items);
@@ -225,6 +225,8 @@ function App() {
           history.push("/users/me");
         })
         .catch((err) => console.log(err));
+    }
+    tokenCheck();
   }, []);
 
   return (
