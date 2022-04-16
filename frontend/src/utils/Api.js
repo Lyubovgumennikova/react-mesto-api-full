@@ -72,14 +72,14 @@ class Api {
     }
 
     addCardLike(data) { // •	“залайкать” карточку (PUT)
-        return fetch(`${this._url}/cards/${data._cardId}/likes`, {
+        return fetch(`${this._url}/cards/${data}/likes`, {
             method: "PUT",
             headers: this._headers,
 
         }).then((res) => this._errorHandler(res));
     }
 
-    changeLikeCardStatus(data, isLiked) { // •	“залайкать” карточку
+    changeLikeCardStatus(data, isLiked) { // •	“дезалайкать” карточку
         const promise = !isLiked
         return fetch(`${this._url}/cards/${data}/likes`, {
             method: promise ? 'DELETE' : 'PUT',

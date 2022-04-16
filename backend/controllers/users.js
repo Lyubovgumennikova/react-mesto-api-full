@@ -9,7 +9,7 @@ const Forbidden = require('../errors/Forbidden');
 
 const { SALT_ROUNDS, JWT_SECRET } = require('../config/index');
 
-// const { NODE_ENV, SECRET_KEY } = process.env;
+const { NODE_ENV, SECRET_KEY } = process.env;
 
 module.exports.createUser = (req, res, next) => {
   const {
@@ -54,8 +54,8 @@ module.exports.login = (req, res, next) => {
     })
     .then((user) => {
       // eslint-disable-next-line max-len
-      // const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? SECRET_KEY : JWT_SECRET, { expiresIn: '7d' });
-      const token = jwt.sign({ _id: user._id }, JWT_SECRET, { expiresIn: '7d' });
+      const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? SECRET_KEY : JWT_SECRET, { expiresIn: '7d' });
+      // const token = jwt.sign({ _id: user._id }, JWT_SECRET, { expiresIn: '7d' });
       res.send({ jwt: token });
     })
     .catch(next);
