@@ -56,7 +56,7 @@ function App() {
         // res.data.email
         setEmail(userData.email);
         setIsLoggedIn(true);
-        setCurrentUser(res);
+        setCurrentUser(res.data);
         history.push("/users/me");
       })
       .catch((err) => console.log(err));
