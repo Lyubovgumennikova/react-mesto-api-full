@@ -23,6 +23,6 @@ module.exports = (req, res, next) => {
     return next(new Forbidden('Необходима авторизация'));
   }
   req.user = payload; // записываем пейлоуд в объект запроса
-  console.log(req.user);
+  // console.log(req.user);
   return next(); // пропускаем запрос дальше
 };

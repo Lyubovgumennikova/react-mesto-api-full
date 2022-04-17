@@ -40,7 +40,7 @@ function App() {
 
   const tokenCheck = () => {
     const jwt = localStorage.getItem("jwt");
-    if (!localStorage.getItem("jwt")) {
+    if (!jwt) {
       history.push("/signin");
       return;
     }
@@ -56,7 +56,7 @@ function App() {
         // res.data.email
         setEmail(userData.email);
         setIsLoggedIn(true);
-        // setCurrentUser(res);
+        setCurrentUser(res);
         history.push("/users/me");
       })
       .catch((err) => console.log(err));
