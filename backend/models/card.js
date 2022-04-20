@@ -6,15 +6,6 @@ const cardSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  likes: [
-    {
-      user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'user',
-      },
-      default: [],
-    },
-  ],
   link: {
     type: String,
     validate: {
@@ -29,6 +20,15 @@ const cardSchema = new mongoose.Schema({
     minlength: 2,
     maxlength: 30,
   },
+  likes: [
+    {
+      user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'user',
+      },
+      default: [],
+    },
+  ],
   owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user',

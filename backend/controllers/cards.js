@@ -5,8 +5,8 @@ const ValidationError = require('../errors/ValidationError');
 const Card = require('../models/card');
 
 module.exports.createCard = (req, res, next) => {
-  const { name, link } = req.body;
-  Card.create({ name, link, owner: req.user._id })
+  const { link, name } = req.body;
+  Card.create({ link, name, owner: req.user._id })
     .then((card) => res.send({ data: card }))
     .catch((err) => {
       if (err.name === 'ValidationError') {

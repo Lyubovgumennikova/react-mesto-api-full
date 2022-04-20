@@ -1,5 +1,4 @@
 export const BASE_URL = process.env.REACT_APP_BASE_URL || 'http://localhost:3000'
-//http://api.domain.nomoredomains.work/
 class Api {
     constructor(config) {
         this._url = config.url;
@@ -26,10 +25,9 @@ class Api {
             method: "POST",
             headers: this._headers,
             body: JSON.stringify({
-                name: data.name,
-                link: data.link,
-
-                }),
+              link: data.link,
+              name: data.name,
+            }),
         }).then((res) => this._errorHandler(res));
     }
 

@@ -56,7 +56,7 @@ function App() {
         // res.data.email
         setEmail(userData.email);
         setIsLoggedIn(true);
-        setCurrentUser(res.data);
+        setCurrentUser(res);
         history.push("/users/me");
       })
       .catch((err) => console.log(err));
@@ -166,8 +166,9 @@ function App() {
     // handleSubmit: (onAddPlace) => {
     api
       .addNewCard(inputValue)
-      .then((newCard) => {
-        setCards([newCard, ...cards]);
+      .then(newCard => {
+        console.log(newCard)
+        setCards([newCard.data, ...cards]);
         closeAllPopups();
       })
       .catch((err) => {
@@ -196,14 +197,16 @@ function App() {
 
   function handleCardLike(card) {
     // Снова проверяем, есть ли уже лайк на этой карточке
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
+    console.log(card);
+    const isLiked = card.likes.some(i => i === currentUser.data._id);
     // Отправляем запрос в API и получаем обновлённые данные карточки
     api
       .changeLikeCardStatus(card._id, !isLiked)
       .then((newCard) => {
         setCards((state) =>
-          state.map((c) => (c._id === card._id ? newCard : c))
+          state.map(c => (c._id === card._id ? newCard : c))
         );
+        console.log(newCard)
       })
       .catch((err) => console.log(err));
   }
@@ -214,21 +217,31 @@ function App() {
   }
 
   useEffect(() => {
-    if (localStorage.getItem("jwt")) {
-      const userData = [api.getUserInfo(), api.getInitialCards()]; //, email
-    // if (!isLoggedIn) return;
-    // if (currentUser)
-      Promise.all(userData)
-        .then(([user, items]) => {
+    tokenCheck();
+    api.getInitialCards()
+        .then( items => {
           setCards(items.data);
-          setCurrentUser(user.data);
-          // email: data;
-          history.push("/users/me");
         })
         .catch((err) => console.log(err));
-    }
-    tokenCheck();
+    // if (localStorage.getItem("jwt")) {
+    //   const userData = [api.getUserInfo(), api.getInitialCards()]; //, email
+    // // if (!isLoggedIn) return;
+    // // if (currentUser)
+    //   Promise.all(userData)
+    //     .then(([user, items]) => {
+    //       setCards(items.data);
+    //       setCurrentUser(user.data);
+    //       // email: data;
+    //       history.push("/users/me");
+    //     })
+    //     .catch((err) => console.log(err));
+    // }
+    // tokenCheck();
   }, []);
+
+  // useEffect(() => {
+  //   tokenCheck();
+  // }, []);
 
   return (
     <div className="page__container">
