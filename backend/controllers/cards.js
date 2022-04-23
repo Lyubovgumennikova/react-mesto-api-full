@@ -47,6 +47,7 @@ module.exports.likeCard = (req, res, next) => {
   Card.findByIdAndUpdate(
     req.params._id,
     { $addToSet: { likes: req.user._id } }, // добавить _id в массив, если его там нет
+    console.log(req.params._id),
     { new: true },
   )
     .then((card) => {
@@ -84,3 +85,27 @@ module.exports.dislikeCard = (req, res, next) => {
       }
     });
 };
+
+// const upLikeCard = (req, res, method, next) => {
+//   const { params: { id } } = req;
+//   Card.findByIdAndUpdate(
+//     id,
+//     { [method]: { likes: req.user._id } }, // убрать _id из массива
+//     { new: true },
+//   )
+//     .orFail(() => {
+//       throw new NotFound('Запрашиваемая карточка не найдена');
+//     })
+//     .then((card) => {
+//       res.send({ data: card });
+//     })
+//     .catch((err) => {
+//       if (err.name === 'CastError') {
+//         next(new ValidationError('Невалидный id '));
+//       } else {
+//         next(err);
+//       }
+//     });
+// };
+
+// module.exports.likeCard = (req, res) => upLikeCard(req, res, '$addToSet');

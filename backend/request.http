@@ -1,0 +1,43 @@
+GET http://localhost:3000/users
+{
+  "jwt": [" {eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjVkYWE1NWQ4NjBiNTk2NjhjNDdlYmEiLCJpYXQiOjE2NTA2NjE4NzEsImV4cCI6MTY1MTI2NjY3MX0.adxq1fVaiR1H9U7wucf4PtlA4tyF_qxrKZO4pBNi57k}" ]
+
+}
+
+
+###
+
+POST http://localhost:3000/signin
+
+{
+    "email": "lyubovgumennikova@yandex.ru",
+    "password": "111111"
+}
+
+###
+
+POST http://localhost:3000/users
+
+{
+    "name": "ff",
+    "about": "ava",
+    "avatar": "https://pictures.s3.yandex.net/frontend-developer/common/ava.jpg"
+}
+
+###
+
+PUT  'http://localhost:3000/cards/625b044c2a30341d137a9a16/likes';
+
+
+###
+
+POST http://localhost:3000/cards;
+Content-Type: application/json
+
+{
+
+    "name": "ava",
+    "link": "https://pictures.s3.yandex.net/frontend-developer/common/ava.jpg"
+
+
+}

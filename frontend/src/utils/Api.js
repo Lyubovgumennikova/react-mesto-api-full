@@ -80,7 +80,7 @@ class Api {
 
     changeLikeCardStatus(data, isLiked) { // •	“дезалайкать” карточку
         const promise = !isLiked
-        return fetch(`${this._url}/cards/${data}/likes`, {
+        return fetch(`${this._url}/cards/${data._id}/likes`, {
             method: promise ? 'DELETE' : 'PUT',
             headers: this._headers,
 
