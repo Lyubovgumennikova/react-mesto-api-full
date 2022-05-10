@@ -47,7 +47,6 @@ module.exports.likeCard = (req, res, next) => {
   Card.findByIdAndUpdate(
     req.params._id,
     { $addToSet: { likes: req.user._id } }, // добавить _id в массив, если его там нет
-    console.log(req.params._id),
     { new: true },
   )
     .then((card) => {
