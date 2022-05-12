@@ -56,7 +56,7 @@ function App() {
         // res.data.email
         setEmail(userData.email);
         setIsLoggedIn(true);
-        setCurrentUser(res);
+        // setCurrentUser(res.data);
         history.push("/users/me");
       })
       .catch((err) => console.log(err));
@@ -197,7 +197,7 @@ function App() {
 
   function handleCardLike(card) {
     // Снова проверяем, есть ли уже лайк на этой карточке
-    const isLiked = card.likes.some((i) => i._id === currentUser.data._id);
+    const isLiked = card.likes.some((i) => i === currentUser._id);
     // Отправляем запрос в API и получаем обновлённые данные карточки
     api.changeLikeCardStatus(card, !isLiked)
       .then((newCard) => {
@@ -214,27 +214,31 @@ function App() {
   }
 
   useEffect(() => {
-    tokenCheck();
-    api.getInitialCards()
-        .then( items => {
-          setCards(items.data);
-        })
-        .catch((err) => console.log(err));
-    // if (localStorage.getItem("jwt")) {
-    //   const userData = [api.getUserInfo(), api.getInitialCards()]; //, email
-    // // if (!isLoggedIn) return;
-    // // if (currentUser)
-    //   Promise.all(userData)
-    //     .then(([user, items]) => {
+    // tokenCheck();
+    // api.getInitialCards()
+    //     .then( items => {
     //       setCards(items.data);
-    //       setCurrentUser(user.data);
-    //       // email: data;
-    //       history.push("/users/me");
     //     })
     //     .catch((err) => console.log(err));
+    // if (isLoggedIn) {
+      if (isLoggedIn) return;
+      // if (!jwt) return;
+      // if (!isLoggedIn) return;
+      setIsLoggedIn(true);
+      const userData = [api.getUserInfo(), api.getInitialCards()]; //, email
+    // if (!isLoggedIn) return;
+    // if (currentUser)
+      Promise.all(userData)
+        .then(([user, items]) => {
+          setCards(items.data);
+          setCurrentUser(user.data);
+          // email: data;
+          history.push("/users/me");
+        })
+        .catch((err) => console.log(err));
     // }
-    // tokenCheck();
-  }, []);
+    tokenCheck();
+  }, [ isLoggedIn]);
 
   // useEffect(() => {
   //   tokenCheck();

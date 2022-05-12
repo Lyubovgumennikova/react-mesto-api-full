@@ -19,7 +19,7 @@ module.exports.createCard = (req, res, next) => {
 
 module.exports.getCard = (req, res, next) => {
   Card.find({})
-    .then((cards) => res.send({ data: cards }))
+    .then((cards) => res.send({ data: cards.reverse() }))
     .catch(next);
 };
 
@@ -45,7 +45,7 @@ module.exports.deleteCard = (req, res, next) => {
 
 module.exports.likeCard = (req, res, next) => {
   Card.findByIdAndUpdate(
-    req.params._id,
+    req.params.id,
     { $addToSet: { likes: req.user._id } }, // добавить _id в массив, если его там нет
     { new: true },
   )

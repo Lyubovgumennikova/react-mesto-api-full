@@ -21,13 +21,13 @@ function Main({
         <div className="profile__edit">
           <div
             className="profile__avatar profile__avatar-button-edit" //src={data.avatar}
-            style={{ backgroundImage: `url(${currentUser.data.avatar})` }}
+            style={{ backgroundImage: `url(${currentUser.avatar})` }}
             onClick={onEditAvatar}
           />
         </div>
         <div className="profile__info">
           <div className="profile__info-nik">
-            <h1 className="profile__info-name">{currentUser.data.name} </h1>
+            <h1 className="profile__info-name">{currentUser.name} </h1>
             <button
               aria-label="edit"
               type="button"
@@ -35,7 +35,7 @@ function Main({
               onClick={onEditProfile}
             />
           </div>
-          <p className="profile__info-job">{currentUser.data.about}</p>
+          <p className="profile__info-job">{currentUser.about}</p>
         </div>
         <button
           aria-label="add"
