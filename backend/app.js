@@ -2,12 +2,9 @@ require('dotenv').config();
 
 const express = require('express');
 
-console.log(process.env.NODE_ENV);
 const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-
-// const { NODE_ENV, SECRET_KEY } = process.env;
 
 const cors = require('cors');
 const auth = require('./middlewares/auth');
@@ -23,21 +20,22 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
   // useCreateIndex: true,
   // useFindAndModify: false,
+  // useUnifiedTopology: true,
 });
 
 app.use(cors());
 // app.use(express.cors());
 app.use(requestLogger); // подключаем логгер запросов
 
-// app.get('/crash-test', () => {
-//   setTimeout(() => {
-//     throw new Error('Сервер сейчас упадёт');
-//   }, 0);
-// });
-
-app.get('/crash', (req, res, next) => {
-  next(new Error('Приложение упало ('));
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
 });
+
+// app.get('/crash', (req, res, next) => {
+//   next(new Error('Приложение упало ('));
+// });
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

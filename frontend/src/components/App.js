@@ -19,6 +19,7 @@ import {
   useHistory,
   useLocation,
 } from "react-router-dom/cjs/react-router-dom.min";
+import Card from "./Card";
 
 function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
@@ -44,19 +45,14 @@ function App() {
       history.push("/signin");
       return;
     }
-
     AuthApi.getContent(jwt)
       .then((res) => {
         if (!res) return;
 
-        const userData = {
-          email: res.data.email,
-          id: res.data._id,
-        };
-        // res.data.email
-        setEmail(userData.email);
+        setEmail(res.data.email);
         setIsLoggedIn(true);
-        // setCurrentUser(res.data);
+        setCurrentUser(res.data);
+        // setCards(cards.data);
         history.push("/users/me");
       })
       .catch((err) => console.log(err));
@@ -67,12 +63,12 @@ function App() {
     AuthApi.authorize(data.email, data.password)
       .then((data) => {
         if (!data.jwt)
-          // const myError = new Error('please improve your code')
           return;
 
         localStorage.setItem("jwt", data.jwt);
         setIsLoggedIn(true);
-        history.push("/users/me");
+        tokenCheck();
+        history.push("/");
       })
       .catch((err) => setIsRegister(true))
       .finally(() => {
@@ -167,7 +163,6 @@ function App() {
     api
       .addNewCard(inputValue)
       .then(newCard => {
-        console.log(newCard)
         setCards([newCard.data, ...cards]);
         closeAllPopups();
       })
@@ -214,35 +209,28 @@ function App() {
   }
 
   useEffect(() => {
-    // tokenCheck();
+    // const jwt = localStorage.getItem("jwt");
+    if(localStorage.getItem("jwt")){
+      tokenCheck();
+      api.getInitialCards()
+      .then( items => {
+        setCards(items.data);
+      })
+      .catch((err) => console.log(err));
+    }
+    history.push("/signin");
+      return;
+    // if(!localStorage.getItem("jwt")){
+    //   history.push("/signin");
+    //   return;
+    // }
     // api.getInitialCards()
     //     .then( items => {
     //       setCards(items.data);
     //     })
     //     .catch((err) => console.log(err));
-    // if (isLoggedIn) {
-      if (isLoggedIn) return;
-      // if (!jwt) return;
-      // if (!isLoggedIn) return;
-      setIsLoggedIn(true);
-      const userData = [api.getUserInfo(), api.getInitialCards()]; //, email
-    // if (!isLoggedIn) return;
-    // if (currentUser)
-      Promise.all(userData)
-        .then(([user, items]) => {
-          setCards(items.data);
-          setCurrentUser(user.data);
-          // email: data;
-          history.push("/users/me");
-        })
-        .catch((err) => console.log(err));
-    // }
-    tokenCheck();
-  }, [ isLoggedIn]);
-
-  // useEffect(() => {
-  //   tokenCheck();
-  // }, []);
+    // tokenCheck();
+  }, [history]);
 
   return (
     <div className="page__container">
