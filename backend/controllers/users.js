@@ -19,7 +19,7 @@ module.exports.createUser = (req, res, next) => {
   User.findOne({ email })
     .then((user) => {
       if (user) {
-        throw new ErrorConflict('Пользователь с таким email уже зарегестрирован');
+        throw new ErrorConflict('Пользователь с таким email уже зарегистрирован');
       }
       return bcrypt.hash(password, SALT_ROUNDS);
     })
@@ -41,7 +41,7 @@ module.exports.login = (req, res, next) => {
   User.findOne({ email }, 'password ')
     .then((user) => {
       if (!user) {
-        throw new Unauthorized('Неправильные почта или парольg');
+        throw new Unauthorized('Неправильные почта или пароль');
       }
       // сравниваем переданный пароль и хеш из базы
       return bcrypt.compare(password, user.password)

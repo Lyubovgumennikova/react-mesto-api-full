@@ -35,7 +35,6 @@ class Api {
         return fetch(`${this._url}/cards/${data}`, {
             method: "DELETE",
             headers: this._headers,
-
         }).then((res) => this._errorHandler(res));
     }
 
@@ -74,7 +73,6 @@ class Api {
         return fetch(`${this._url}/cards/${data}/likes`, {
             method: "PUT",
             headers: this._headers,
-
         }).then((res) => this._errorHandler(res));
     }
 
@@ -83,30 +81,22 @@ class Api {
         return fetch(`${this._url}/cards/${data._id}/likes`, {
             method: promise ? 'DELETE' : 'PUT',
             headers: this._headers,
-
         }).then((res) => this._errorHandler(res));
     }
-
 
     deleteCardLike(data) { // •	удалить лайк карточки (DELETE)
         return fetch(`${this._url}/cards/${data._cardId}/likes`, {
             method: "DELETE",
             headers: this._headers,
-
         }).then((res) => this._errorHandler(res));
     }
 }
 
 const api = new Api({
   url: BASE_URL,
-    // url: 'http://api.domain.nomoredomains.work/',
     headers: {
-      // Authorization : jwt,
         Authorization: ` Bearer ${localStorage.jwt}`,
-        // debugger,
-        // Authorization: `Bearer ${'jwt'}`,
-        // Authorization: 'be382cad-ad48-4296-8278-8fad1d3ee484',  //jwt,
-      "content-type": "application/json",
+        "content-type": "application/json",
     }
 });
 

@@ -1,7 +1,6 @@
 import React from "react";
 import Card from "./Card";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
-import { Link } from "react-router-dom";
 
 function Main({
   onEditProfile,
@@ -11,16 +10,14 @@ function Main({
   cards,
   onCardLike,
   onCardDelete,
-  // userData,
 }) {
   const currentUser = React.useContext(CurrentUserContext);
-  // let { username, email} = userData;
   return (
     <main className="page__main">
       <section className="profile">
         <div className="profile__edit">
           <div
-            className="profile__avatar profile__avatar-button-edit" //src={data.avatar}
+            className="profile__avatar profile__avatar-button-edit"
             style={{ backgroundImage: `url(${currentUser.avatar})` }}
             onClick={onEditAvatar}
           />

@@ -19,7 +19,6 @@ import {
   useHistory,
   useLocation,
 } from "react-router-dom/cjs/react-router-dom.min";
-import Card from "./Card";
 
 function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
@@ -158,8 +157,6 @@ function App() {
   };
 
   const handleAddPlaceSubmit = (inputValue) => {
-    // setIsSubmitted(true);
-    // handleSubmit: (onAddPlace) => {
     api
       .addNewCard(inputValue)
       .then(newCard => {
@@ -220,16 +217,6 @@ function App() {
     }
     history.push("/signin");
       return;
-    // if(!localStorage.getItem("jwt")){
-    //   history.push("/signin");
-    //   return;
-    // }
-    // api.getInitialCards()
-    //     .then( items => {
-    //       setCards(items.data);
-    //     })
-    //     .catch((err) => console.log(err));
-    // tokenCheck();
   }, [history]);
 
   return (

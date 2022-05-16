@@ -24,7 +24,6 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 });
 
 app.use(cors());
-// app.use(express.cors());
 app.use(requestLogger); // подключаем логгер запросов
 
 app.get('/crash-test', () => {
