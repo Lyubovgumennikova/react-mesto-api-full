@@ -9,6 +9,5 @@ const {
 
 module.exports = {
   SALT_ROUNDS,
-  // JWT_SECRET: NODE_ENV === 'production' ? JWT_SECRET : 'JWT_SECRET',
   JWT_SECRET: NODE_ENV === 'production' ? SECRET_KEY : JWT_SECRET,
 };
