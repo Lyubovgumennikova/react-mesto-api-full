@@ -25,4 +25,6 @@ git clone https://github.com/Lyubovgumennikova/react-mesto-api-full.git
 
 npm install - устанавливает зависимости;
 npm run dev - запускает сервер;
-npm run start - запускает сервер с hot-reload;
+npm run start - запускает сервер с hot-reload.  Откройте http://localhost:3000 , чтобы просмотреть его в браузере.
+npm run build Создает приложение для производства в buildpapku. Он правильно выполняет React в производственном режиме и оптимизирует сборку для достижения наилучшей производительности.
+
