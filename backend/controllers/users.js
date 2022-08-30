@@ -9,8 +9,6 @@ const Forbidden = require('../errors/Forbidden');
 
 const { SALT_ROUNDS, JWT_SECRET } = require('../config/index');
 
-// const { NODE_ENV, SECRET_KEY } = process.env;
-
 module.exports.createUser = (req, res, next) => {
   const {
     email, password, about, avatar, name,
@@ -37,7 +35,6 @@ module.exports.createUser = (req, res, next) => {
 
 module.exports.login = (req, res, next) => {
   const { email, password } = req.body;
-  // return User.findUserByCredentials({ email, password })
   User.findOne({ email }, 'password ')
     .then((user) => {
       if (!user) {
