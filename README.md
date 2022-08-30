@@ -20,7 +20,7 @@ RegExp
 Инструкция по установке:
 Клонировать репозиторий:
 
-git clone 
+git clone https://github.com/Lyubovgumennikova/react-mesto-api-full.git
 В директории проекта запустить приложение в режиме разработки:
 
 npm install - устанавливает зависимости;
